@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  Guess Word
+
+  Created by eevee on 24/07/2023.
+  
+*/
+
+select_room = "Выберите комнату";
+
+easy = "Легкая комната";
+main = "Основная комната";
+hard = "Тяжелая комната";
+custom = "Комната %@";
+
+enter_code = "Ввести код";
+enter_room_code = "Введите код комнаты";
+room_code = "Код комнаты";
+
+loading = "Загрузка";
+
+share_room = "Давай отгадывать слово вместе!\nhttps://guess-word.com/%@";
+enter_word = "Введите слово";
+loading_room_error = "Не удалось загрузить комнату.";
+
+go_back = "Назад";
+error_occurred = "Произошла ошибка";
+word_not_found = "Введенное слово отсутствует в словаре игры.";
+congratulations = "Поздравляю!";
+attempts_count = "Количество попыток: %@";
+you_guessed_faster_than = "Вы отгадали быстрее, чем %@%% игроков!";

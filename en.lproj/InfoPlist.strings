@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  Guess Word
+
+  Created by eevee on 25/07/2023.
+  
+*/
+
+CFBundleDisplayName = "Guess Word";
