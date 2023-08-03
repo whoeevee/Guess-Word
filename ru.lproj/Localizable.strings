@@ -25,6 +25,7 @@ loading_room_error = "Не удалось загрузить комнату.";
 
 go_back = "Назад";
 error_occurred = "Произошла ошибка";
+unknown_error_occurred = "Произошла неизвестная ошибка.";
 word_not_found = "Введенное слово отсутствует в словаре игры.";
 congratulations = "Поздравляю!";
 attempts_count = "Количество попыток: %@";
