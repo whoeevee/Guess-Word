@@ -25,6 +25,7 @@ loading_room_error = "Unable to load room.";
 
 go_back = "Go Back";
 error_occurred = "An Error Occurred";
+unknown_error_occurred = "An unknown error occurred.";
 word_not_found = "There is no word in dictionary.";
 congratulations = "Congratulations!";
 attempts_count = "Attempts count: %@";

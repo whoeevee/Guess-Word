@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GuessData: Identifiable {
+struct GuessData: Identifiable, Equatable {
     let id = UUID()
     var word: String
     var order: Int

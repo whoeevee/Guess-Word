@@ -10,10 +10,11 @@ import Foundation
 class GuessApi {
     
     var djangoSessionId: String
+    var apiUrl: String = "https://guess-word.com/api"
     
     private func perform<body: Encodable>(path: String, method: String, body: body) async throws -> Data {
         
-        var request = URLRequest(url: URL(string: "\(Constants.ApiUrl)\(path)")!)
+        var request = URLRequest(url: URL(string: "\(apiUrl)\(path)")!)
         
         request.httpMethod = method
         request.addValue("django_session_id=\(djangoSessionId)", forHTTPHeaderField: "Cookie")
@@ -38,9 +39,9 @@ class GuessApi {
         self.djangoSessionId = djangoSessionId
     }
     
-    func getRoomInfo(code: String) async throws -> Room {
+    func getRoomInfo(code: String) async throws -> RoomModel {
         return try JSONDecoder().decode(
-           Room.self,
+           RoomModel.self,
            from: await perform(
                path: "/rooms/\(code)/",
                method: "GET",

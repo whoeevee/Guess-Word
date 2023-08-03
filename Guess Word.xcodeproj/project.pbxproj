@@ -7,21 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		920DCAFF2A7B414C002856C8 /* WordRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920DCAFE2A7B414C002856C8 /* WordRowView.swift */; };
+		920DCB012A7B45B0002856C8 /* WordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920DCB002A7B45B0002856C8 /* WordTextField.swift */; };
+		920DCB042A7B491D002856C8 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920DCB032A7B491D002856C8 /* Color+Extension.swift */; };
+		920DCB062A7B495F002856C8 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920DCB052A7B495F002856C8 /* View+Extension.swift */; };
+		920DCB082A7B4983002856C8 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920DCB072A7B4983002856C8 /* UIApplication+Extension.swift */; };
+		920DCB0A2A7B49D9002856C8 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920DCB092A7B49D9002856C8 /* String+Extension.swift */; };
 		9253D29D2A6E9B0C00B98603 /* Guess_WordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9253D29C2A6E9B0C00B98603 /* Guess_WordApp.swift */; };
 		9253D29F2A6E9B0C00B98603 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9253D29E2A6E9B0C00B98603 /* ContentView.swift */; };
 		9253D2A12A6E9B0D00B98603 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9253D2A02A6E9B0D00B98603 /* Assets.xcassets */; };
-		9253D2AE2A6E9C0200B98603 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9253D2AD2A6E9C0200B98603 /* Extensions.swift */; };
 		9253D2B02A6E9C2B00B98603 /* GuessApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9253D2AF2A6E9C2B00B98603 /* GuessApi.swift */; };
-		9253D2B22A6E9D5200B98603 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9253D2B12A6E9D5200B98603 /* Constants.swift */; };
-		9253D2B52A6EAABF00B98603 /* Exceptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9253D2B42A6EAABF00B98603 /* Exceptions.swift */; };
-		92828A5B2A6EF40F00065170 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92828A5A2A6EF40F00065170 /* Enums.swift */; };
+		9253D2B52A6EAABF00B98603 /* GuessException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9253D2B42A6EAABF00B98603 /* GuessException.swift */; };
+		925A81772A79EAAC00FB2EDF /* RoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925A81762A79EAAC00FB2EDF /* RoomModel.swift */; };
+		925A81792A79EAE700FB2EDF /* RoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925A81782A79EAE700FB2EDF /* RoomViewModel.swift */; };
+		92828A5B2A6EF40F00065170 /* RoomLoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92828A5A2A6EF40F00065170 /* RoomLoadingState.swift */; };
 		92828A5D2A6EF44500065170 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92828A5C2A6EF44500065170 /* Util.swift */; };
 		92828A5F2A6EF55400065170 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92828A5E2A6EF55400065170 /* UserPreferences.swift */; };
 		92828A632A6EF62A00065170 /* RoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92828A622A6EF62A00065170 /* RoomView.swift */; };
 		92828A662A6EF77200065170 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92828A682A6EF77200065170 /* Localizable.strings */; };
 		92828A6B2A6EF9F100065170 /* RoomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92828A6A2A6EF9F100065170 /* RoomsView.swift */; };
 		92828A6D2A6EFB7B00065170 /* GuessButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92828A6C2A6EFB7B00065170 /* GuessButton.swift */; };
-		92E245312A7017FF00513EDF /* Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E245302A7017FF00513EDF /* Internal.swift */; };
+		92E245312A7017FF00513EDF /* GuessData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E245302A7017FF00513EDF /* GuessData.swift */; };
 		92E245342A70181C00513EDF /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E245332A70181C00513EDF /* Request.swift */; };
 		92E245362A70182200513EDF /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E245352A70182200513EDF /* Response.swift */; };
 		92E2453A2A7033D500513EDF /* SystemIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E245392A7033D500513EDF /* SystemIcon.swift */; };
@@ -29,15 +35,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		920DCAFE2A7B414C002856C8 /* WordRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRowView.swift; sourceTree = "<group>"; };
+		920DCB002A7B45B0002856C8 /* WordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTextField.swift; sourceTree = "<group>"; };
+		920DCB032A7B491D002856C8 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		920DCB052A7B495F002856C8 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		920DCB072A7B4983002856C8 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		920DCB092A7B49D9002856C8 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		9253D2992A6E9B0C00B98603 /* Guess Word.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guess Word.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9253D29C2A6E9B0C00B98603 /* Guess_WordApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guess_WordApp.swift; sourceTree = "<group>"; };
 		9253D29E2A6E9B0C00B98603 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9253D2A02A6E9B0D00B98603 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9253D2AD2A6E9C0200B98603 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9253D2AF2A6E9C2B00B98603 /* GuessApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessApi.swift; sourceTree = "<group>"; };
-		9253D2B12A6E9D5200B98603 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		9253D2B42A6EAABF00B98603 /* Exceptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exceptions.swift; sourceTree = "<group>"; };
-		92828A5A2A6EF40F00065170 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		9253D2B42A6EAABF00B98603 /* GuessException.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessException.swift; sourceTree = "<group>"; };
+		925A81762A79EAAC00FB2EDF /* RoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomModel.swift; sourceTree = "<group>"; };
+		925A81782A79EAE700FB2EDF /* RoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewModel.swift; sourceTree = "<group>"; };
+		92828A5A2A6EF40F00065170 /* RoomLoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomLoadingState.swift; sourceTree = "<group>"; };
 		92828A5C2A6EF44500065170 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		92828A5E2A6EF55400065170 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		92828A622A6EF62A00065170 /* RoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomView.swift; sourceTree = "<group>"; };
@@ -45,7 +57,7 @@
 		92828A692A6EF77500065170 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		92828A6A2A6EF9F100065170 /* RoomsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsView.swift; sourceTree = "<group>"; };
 		92828A6C2A6EFB7B00065170 /* GuessButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessButton.swift; sourceTree = "<group>"; };
-		92E245302A7017FF00513EDF /* Internal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Internal.swift; sourceTree = "<group>"; };
+		92E245302A7017FF00513EDF /* GuessData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessData.swift; sourceTree = "<group>"; };
 		92E245332A70181C00513EDF /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		92E245352A70182200513EDF /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		92E245392A7033D500513EDF /* SystemIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemIcon.swift; sourceTree = "<group>"; };
@@ -64,6 +76,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		920DCB022A7B4907002856C8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				920DCB072A7B4983002856C8 /* UIApplication+Extension.swift */,
+				920DCB092A7B49D9002856C8 /* String+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		920DCB0D2A7B4A64002856C8 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9298039F2A7C0D54006F6104 /* Local */,
+				920DCB0E2A7B4A6C002856C8 /* GuessApi */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		920DCB0E2A7B4A6C002856C8 /* GuessApi */ = {
+			isa = PBXGroup;
+			children = (
+				9253D2AF2A6E9C2B00B98603 /* GuessApi.swift */,
+			);
+			path = GuessApi;
+			sourceTree = "<group>";
+		};
 		9253D2902A6E9B0C00B98603 = {
 			isa = PBXGroup;
 			children = (
@@ -85,37 +123,122 @@
 		9253D29B2A6E9B0C00B98603 /* Guess Word */ = {
 			isa = PBXGroup;
 			children = (
-				9253D29C2A6E9B0C00B98603 /* Guess_WordApp.swift */,
-				92E245372A70190F00513EDF /* Views */,
-				9253D2AF2A6E9C2B00B98603 /* GuessApi.swift */,
-				92E2452F2A7017F100513EDF /* Structures */,
-				9253D2B42A6EAABF00B98603 /* Exceptions.swift */,
-				92E2453B2A703E0100513EDF /* Helpers */,
-				92E245382A701A3E00513EDF /* Modifiers */,
-				9253D2B12A6E9D5200B98603 /* Constants.swift */,
-				92828A5A2A6EF40F00065170 /* Enums.swift */,
-				9253D2AD2A6E9C0200B98603 /* Extensions.swift */,
-				9253D2A02A6E9B0D00B98603 /* Assets.xcassets */,
+				929803A12A7C127F006F6104 /* Presentation */,
+				929803A02A7C1266006F6104 /* Shared */,
 			);
 			path = "Guess Word";
 			sourceTree = "<group>";
 		};
-		92E2452F2A7017F100513EDF /* Structures */ = {
+		925A81752A79EA6A00FB2EDF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				92E245302A7017FF00513EDF /* Internal.swift */,
 				92E245332A70181C00513EDF /* Request.swift */,
 				92E245352A70182200513EDF /* Response.swift */,
+				9253D2B42A6EAABF00B98603 /* GuessException.swift */,
 			);
-			path = Structures;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9298039F2A7C0D54006F6104 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				92828A5E2A6EF55400065170 /* UserPreferences.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		929803A02A7C1266006F6104 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				9253D29C2A6E9B0C00B98603 /* Guess_WordApp.swift */,
+				9253D2A02A6E9B0D00B98603 /* Assets.xcassets */,
+				92E245382A701A3E00513EDF /* Modifiers */,
+				920DCB022A7B4907002856C8 /* Extensions */,
+				92E2453B2A703E0100513EDF /* Helpers */,
+				920DCB0D2A7B4A64002856C8 /* Data */,
+				92E245372A70190F00513EDF /* Views */,
+				925A81752A79EA6A00FB2EDF /* Models */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		929803A12A7C127F006F6104 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				929803A32A7C12A0006F6104 /* RoomDetails */,
+				929803A22A7C128D006F6104 /* Rooms */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		929803A22A7C128D006F6104 /* Rooms */ = {
+			isa = PBXGroup;
+			children = (
+				929803A52A7C12B8006F6104 /* Views */,
+			);
+			path = Rooms;
+			sourceTree = "<group>";
+		};
+		929803A32A7C12A0006F6104 /* RoomDetails */ = {
+			isa = PBXGroup;
+			children = (
+				929803AA2A7C1359006F6104 /* Extensions */,
+				929803A72A7C1306006F6104 /* ViewModels */,
+				929803A62A7C12E1006F6104 /* Models */,
+				929803A42A7C12B3006F6104 /* Views */,
+			);
+			path = RoomDetails;
+			sourceTree = "<group>";
+		};
+		929803A42A7C12B3006F6104 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				92828A622A6EF62A00065170 /* RoomView.swift */,
+				920DCB002A7B45B0002856C8 /* WordTextField.swift */,
+				920DCAFE2A7B414C002856C8 /* WordRowView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		929803A52A7C12B8006F6104 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				92828A6A2A6EF9F100065170 /* RoomsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		929803A62A7C12E1006F6104 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				925A81762A79EAAC00FB2EDF /* RoomModel.swift */,
+				92828A5A2A6EF40F00065170 /* RoomLoadingState.swift */,
+				92E245302A7017FF00513EDF /* GuessData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		929803A72A7C1306006F6104 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				925A81782A79EAE700FB2EDF /* RoomViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		929803AA2A7C1359006F6104 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				920DCB032A7B491D002856C8 /* Color+Extension.swift */,
+				920DCB052A7B495F002856C8 /* View+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		92E245372A70190F00513EDF /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				9253D29E2A6E9B0C00B98603 /* ContentView.swift */,
-				92828A6A2A6EF9F100065170 /* RoomsView.swift */,
-				92828A622A6EF62A00065170 /* RoomView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -132,7 +255,6 @@
 		92E2453B2A703E0100513EDF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				92828A5E2A6EF55400065170 /* UserPreferences.swift */,
 				92828A5C2A6EF44500065170 /* Util.swift */,
 			);
 			path = Helpers;
@@ -211,21 +333,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				9253D29F2A6E9B0C00B98603 /* ContentView.swift in Sources */,
+				925A81772A79EAAC00FB2EDF /* RoomModel.swift in Sources */,
 				92828A5D2A6EF44500065170 /* Util.swift in Sources */,
 				92828A6D2A6EFB7B00065170 /* GuessButton.swift in Sources */,
-				92E245312A7017FF00513EDF /* Internal.swift in Sources */,
-				92828A5B2A6EF40F00065170 /* Enums.swift in Sources */,
+				920DCB062A7B495F002856C8 /* View+Extension.swift in Sources */,
+				92E245312A7017FF00513EDF /* GuessData.swift in Sources */,
+				92828A5B2A6EF40F00065170 /* RoomLoadingState.swift in Sources */,
 				9253D2B02A6E9C2B00B98603 /* GuessApi.swift in Sources */,
+				920DCB012A7B45B0002856C8 /* WordTextField.swift in Sources */,
 				92E2453A2A7033D500513EDF /* SystemIcon.swift in Sources */,
+				920DCB082A7B4983002856C8 /* UIApplication+Extension.swift in Sources */,
 				92E245342A70181C00513EDF /* Request.swift in Sources */,
+				920DCB0A2A7B49D9002856C8 /* String+Extension.swift in Sources */,
 				92E245362A70182200513EDF /* Response.swift in Sources */,
+				920DCB042A7B491D002856C8 /* Color+Extension.swift in Sources */,
+				920DCAFF2A7B414C002856C8 /* WordRowView.swift in Sources */,
 				92828A5F2A6EF55400065170 /* UserPreferences.swift in Sources */,
 				9253D29D2A6E9B0C00B98603 /* Guess_WordApp.swift in Sources */,
-				9253D2AE2A6E9C0200B98603 /* Extensions.swift in Sources */,
+				925A81792A79EAE700FB2EDF /* RoomViewModel.swift in Sources */,
 				92828A632A6EF62A00065170 /* RoomView.swift in Sources */,
 				92828A6B2A6EF9F100065170 /* RoomsView.swift in Sources */,
-				9253D2B22A6E9D5200B98603 /* Constants.swift in Sources */,
-				9253D2B52A6EAABF00B98603 /* Exceptions.swift in Sources */,
+				9253D2B52A6EAABF00B98603 /* GuessException.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +509,7 @@
 				ENABLE_PREVIEWS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Guess-Word-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.word-games";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -393,11 +522,11 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "eevee.Guess-Word";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -426,6 +555,7 @@
 				ENABLE_PREVIEWS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Guess-Word-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.word-games";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -438,11 +568,11 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "eevee.Guess-Word";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

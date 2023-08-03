@@ -7,11 +7,6 @@
 
 import Foundation
 
-struct Room: Codable {
-    var name: String
-    var theme: String
-}
-
 struct FinishStat: Codable {
     var try_count: Int
     var faster: Double
