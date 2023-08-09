@@ -21,6 +21,8 @@ struct RoomView: View {
     @State private var inputWord = ""
     @State private var canInput = true
     
+    @FocusState private var focusOnWordTextField: Bool
+    
     var body: some View {
         
         VStack {
@@ -93,14 +95,19 @@ struct RoomView: View {
                     
                     .padding(.horizontal, 10)
                     
+                    .focused($focusOnWordTextField)
+                    
                     .onSubmit {
                         Task {
-                            withAnimation { canInput.toggle() }
-                            await roomViewModel.submitGuess(guess: inputWord)
-                            withAnimation { inputWord = ""; canInput.toggle() }
-                            
-                            if roomViewModel.isWordGuessed {
-                                withAnimation { showWords = false }
+                            if inputWord != "" {
+                                withAnimation { canInput.toggle() }
+                                await roomViewModel.submitGuess(guess: inputWord)
+                                withAnimation { inputWord = ""; canInput.toggle() }
+                                
+                                if roomViewModel.isWordGuessed {
+                                    withAnimation { showWords = false }
+                                }
+                                focusOnWordTextField = true
                             }
                         }
                     }
@@ -121,6 +128,10 @@ struct RoomView: View {
                 }
                 
             }
+        }
+        
+        .onTapGesture {
+            focusOnWordTextField = false
         }
         
         .navigationBarHidden(true)
