@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Util {
+struct TextUtil {
     
     static func textColor(for score: Int) -> Color {
         let normalizedScore = Double(score) / 500

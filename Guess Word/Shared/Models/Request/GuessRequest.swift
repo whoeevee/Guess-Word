@@ -10,5 +10,3 @@ import Foundation
 struct GuessRequest: Codable {
     var word: String
 }
-
-struct Empty : Codable {}

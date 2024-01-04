@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum RoomLoadingState {
+enum LoadingState {
     case loading, loaded
 }

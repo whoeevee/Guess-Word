@@ -11,14 +11,14 @@ import SwiftUI
 @MainActor final class RoomViewModel: ObservableObject {
 
     var roomCode: String? = nil
-    var guessApi: GuessApi? = nil
+    private let repository = GuessWordApiRepository()
+    
+    @Published var loadingRoomError = false
+    @Published var errorDescription: String? = nil
     
     @Published var roomModel: RoomModel? = nil
     
     @Published var guesses: [GuessData] = []
-    
-    @Published var errorCode: String? = nil
-    @Published var errorDetail: String? = nil
     
     @Published var isWordGuessed = false
     @Published var attemptsCount = 0
@@ -26,65 +26,52 @@ import SwiftUI
     
     func setup(roomCode: String) {
         self.roomCode = roomCode
-        self.guessApi = GuessApi(
-            djangoSessionId: UserPreferences.shared.djangoSessionId()!
-        )
     }
     
-    private func loadRoom() async throws {
-        roomModel = try await guessApi!.getRoomInfo(code: roomCode!)
-    }
-    
-    private func loadHistory() async throws {
-        guesses = try await guessApi!.getHistory(roomCode: roomCode!).map {
-            GuessData(word: $0.word, order: $0.order)
-        }
-    }
-    
-    func loadRoomAndHistory() async {
+    func loadRoom() async {
         do {
-            try await loadRoom()
-            try await loadHistory()
+            roomModel = try await repository.getRoomInfo(code: roomCode!)
         }
         catch {
-            errorCode = "loading_room_error"
-            errorDetail = "loading_room_error".localized
+            loadingRoomError = true
+            errorDescription = ErrorUtil.getErrorDescription(error)
+        }
+    }
+    
+    func loadHistory() async {
+        do {
+            guesses = try await repository.getHistory(roomCode: roomCode!).map {
+                GuessData(word: $0.word, order: $0.order)
+            }
+        }
+        catch {
+            errorDescription = ErrorUtil.getErrorDescription(error)
         }
     }
     
     func submitGuess(guess: String) async {
         do {
-            let data = try await guessApi!.submitGuess(
+            let data = try await repository.submitGuess(
                 roomCode: roomCode!,
                 word: guess
             )
             
-            if (!data.already_guessed!) {
+            if !data.alreadyGuessed! {
                 guesses.append(GuessData(word: data.word, order: data.order))
                 
-                if (data.finish_stat != nil) {
+                if (data.finishStat != nil) {
                     isWordGuessed = true
                     
-                    attemptsCount = data.finish_stat!.try_count
+                    attemptsCount = data.finishStat!.tryCount
                     fasterThan = Int(
-                        (data.finish_stat!.faster * 100).rounded()
+                        (data.finishStat!.faster * 100).rounded()
                     )
                 }
             }
 
         }
-        catch GuessException.requestException(let code, let detail) {
-            errorCode = code
-            
-            let localizedDetail = errorCode!.localized
-            
-            errorDetail = localizedDetail == errorCode
-                ? detail
-                : localizedDetail
-        }
         catch {
-            errorCode = "unknown_error"
-            errorDetail = "unknown_error_occurred".localized
+            errorDescription = ErrorUtil.getErrorDescription(error)
         }
     }
 }

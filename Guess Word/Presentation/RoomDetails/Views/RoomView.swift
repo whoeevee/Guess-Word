@@ -12,14 +12,13 @@ struct RoomView: View {
     var roomCode: String
     @Environment(\.dismiss) private var dismiss
     
-    @StateObject private var roomViewModel = RoomViewModel()
+    @StateObject private var viewModel = RoomViewModel()
     
-    @State private var roomLoadingState = RoomLoadingState.loading
+    @State private var loadingState = LoadingState.loading
     
     @State private var showWords = true
-    
-    @State private var inputWord = ""
     @State private var canInput = true
+    @State private var inputWord = ""
     
     @FocusState private var focusOnWordTextField: Bool
     
@@ -27,7 +26,7 @@ struct RoomView: View {
         
         VStack {
             
-            switch roomLoadingState {
+            switch loadingState {
                 
             case .loading:
                 ProgressView("loading".localized)
@@ -38,13 +37,13 @@ struct RoomView: View {
                     
                     ZStack {
                         
-                        Text(roomViewModel.roomModel?.name.uppercased() ?? "")
+                        Text(viewModel.roomModel?.name.uppercased() ?? "")
                             .font(.system(size: 18, weight: .bold))
                             .frame(maxWidth: .infinity, maxHeight: 50)
                             .background(
                                 VStack {
-                                    roomViewModel.roomModel != nil
-                                    ? Color(hex: roomViewModel.roomModel!.theme)
+                                    viewModel.roomModel != nil
+                                    ? Color(hex: viewModel.roomModel!.theme)
                                     : Color.accentColor
                                 }
                                 .cornerRadius(20, corners: [.bottomLeft, .bottomRight])
@@ -89,7 +88,7 @@ struct RoomView: View {
                     
                     WordTextField(
                         inputWord: $inputWord,
-                        roomModel: roomViewModel.roomModel!,
+                        roomModel: viewModel.roomModel!,
                         isEnabled: canInput
                     )
                     
@@ -99,14 +98,19 @@ struct RoomView: View {
                     
                     .onSubmit {
                         Task {
-                            if inputWord != "" {
-                                withAnimation { canInput.toggle() }
-                                await roomViewModel.submitGuess(guess: inputWord)
-                                withAnimation { inputWord = ""; canInput.toggle() }
+                            if !inputWord.isEmpty {
                                 
-                                if roomViewModel.isWordGuessed {
-                                    withAnimation { showWords = false }
+                                canInput.toggle()
+                    
+                                await viewModel.submitGuess(guess: inputWord)
+                                
+                                inputWord = ""
+                                canInput.toggle()
+                                
+                                if viewModel.isWordGuessed {
+                                    showWords = false
                                 }
+                                
                                 focusOnWordTextField = true
                             }
                         }
@@ -116,19 +120,25 @@ struct RoomView: View {
     
                     ScrollView {
                         ForEach(
-                            $roomViewModel.guesses
+                            $viewModel.guesses
                             .sorted { $0.order.wrappedValue < $1.order.wrappedValue }
                         ) { guess in
-                            WordRowView(guessData: guess, showWord: showWords)
-                            .padding(.horizontal, 10)
+                            LazyVStack {
+                                WordRowView(guessData: guess, showWord: showWords)
+                                    .padding(.horizontal, 10)
+                            }
                         }
                     }
-                    .animation(.default, value: roomViewModel.guesses)
+                    .animation(.default, value: viewModel.guesses)
                     .padding(.top, 10)
                 }
                 
             }
         }
+        
+        .animation(.easeInOut, value: canInput)
+        .animation(.easeInOut, value: showWords)
+        .animation(.easeInOut, value: loadingState)
         
         .onTapGesture {
             focusOnWordTextField = false
@@ -138,11 +148,12 @@ struct RoomView: View {
         
         .onAppear {
             Task {
-                roomViewModel.setup(roomCode: roomCode)
-                await roomViewModel.loadRoomAndHistory()
+                viewModel.setup(roomCode: roomCode)
+                await viewModel.loadRoom()
+                await viewModel.loadHistory()
                 
-                if roomViewModel.errorCode == nil {
-                    withAnimation { roomLoadingState = .loaded }
+                if viewModel.errorDescription == nil {
+                    loadingState = .loaded
                 }
             }
         }
@@ -150,37 +161,36 @@ struct RoomView: View {
         .alert(
             "error_occurred".localized,
             isPresented: Binding<Bool>(
-                get: { roomViewModel.errorCode != nil },
+                get: { viewModel.errorDescription != nil },
                 set: { _ in }
             ),
             actions: {
-                roomViewModel.errorCode == "loading_room_error"
+                viewModel.loadingRoomError
                 ? Button("go_back".localized) {
                     dismiss()
-                    roomViewModel.errorCode = nil
-                    roomViewModel.errorDetail = nil
+                    viewModel.loadingRoomError = false
+                    viewModel.errorDescription = nil
                 }
                 : Button("OK") {
-                    roomViewModel.errorCode = nil
-                    roomViewModel.errorDetail = nil
+                    viewModel.errorDescription = nil
                 }
             },
-            message: { Text(roomViewModel.errorDetail ?? "") }
+            message: { Text(viewModel.errorDescription ?? "") }
         )
         
         .alert(
             "congratulations".localized,
-            isPresented: $roomViewModel.isWordGuessed,
+            isPresented: $viewModel.isWordGuessed,
             actions: {
                 Button("OK") {
-                    withAnimation(.easeInOut(duration: 0.2)) { showWords = true }
+                    showWords = true
                 }
             },
             message: {
                 Text(
-                    "\("attempts_count".localizeWithFormat(arguments: String(roomViewModel.attemptsCount)))"
+                    "\("attempts_count".localizeWithFormat(arguments: String(viewModel.attemptsCount)))"
                     + "\n"
-                    + "\("you_guessed_faster_than".localizeWithFormat(arguments: String(roomViewModel.fasterThan)))"
+                    + "\("you_guessed_faster_than".localizeWithFormat(arguments: String(viewModel.fasterThan)))"
                  )
             }
         )

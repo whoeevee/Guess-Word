@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RoomsView: View {
     
-    @State private var rooms = ["easy", "main", "hard"]
+    private let rooms = ["easy", "main", "hard"]
     @State private var selectedRoom: String = "main"
     @State private var roomCode: String = ""
     @State private var showInputRoomCodeAlert = false
@@ -47,9 +47,7 @@ struct RoomsView: View {
                     Menu {
                         ForEach(rooms, id: \.self) { room in
                             Button {
-                                withAnimation(.easeIn(duration: 0.2)) {
-                                    selectedRoom = room
-                                }
+                                selectedRoom = room
                             } label: {
                                 Text(room.localized)
                             }
@@ -69,6 +67,8 @@ struct RoomsView: View {
                 }
                 .padding(.horizontal, 10)
             }
+            
+            .animation(.easeIn(duration: 0.2), value: selectedRoom)
             
             .alert("enter_room_code".localized, isPresented: $showInputRoomCodeAlert) {
                 TextField("room_code".localized, text: $roomCode)

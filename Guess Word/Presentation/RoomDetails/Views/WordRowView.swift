@@ -42,7 +42,7 @@ struct WordRowView: View {
         .background(
          RoundedRectangle(cornerRadius: 15, style: .continuous)
              .foregroundColor(
-                Util.textColor(for: guessData.order)
+                TextUtil.textColor(for: guessData.order)
              )
         )
     }
